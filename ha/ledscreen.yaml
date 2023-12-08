@@ -1,0 +1,16 @@
+command_line:
+  switch:
+    name: ledscreen
+    command_on: 'python3 /config/python_scripts/bx5/ha.py on'
+    command_off: 'python3 /config/python_scripts/bx5/ha.py off'
+    command_state: 'python3 /config/python_scripts/bx5/ha.py Status'
+    value_template: '{{ value == "True" }}'
+    scan_interval: 30
+  sensor:
+    name: led_brightness
+    command: 'python3 /config/python_scripts/bx5/ha.py Brightness'
+    value_template: "{{(value | int)}}"
+    scan_interval: 60
+    unit_of_measurement: ''
+shell_command:
+  sync_date: 'python3 /config/python_scripts/bx5/ha.py syncdate'
